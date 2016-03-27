@@ -21,6 +21,7 @@ git checkout $BRANCH
 npm install
 
 forever stop /var/www/bin/$PROJECT_NAME/bin/www
+sleep 10
 forever start /var/www/bin/$PROJECT_NAME/bin/www
 echo "#-----------------------------------------------#"
 echo "#              Execution Completed              #"
