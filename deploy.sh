@@ -1,11 +1,16 @@
 #!/bin/sh
 
-
+if [[ -n "$1" ]] ; then
+	PROJECT_NAME=$1
+else
 	PROJECT_NAME="steam_trader"
+fi
 
-
+if [[ -n "$2" ]] ; then
+	BRANCH=$2
+else
 	BRANCH="master"
-
+fi
 
 cd /var/www/bin/$PROJECT_NAME
 git reset --hard origin/$BRANCH

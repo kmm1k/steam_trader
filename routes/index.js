@@ -7,13 +7,11 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/deploy/', function (req, res) {
-  var mess = "";
   var spawn = require('child_process').spawn,
       deploy = spawn('sh', [ '../deploy.sh' ]);
 
   deploy.stdout.on('data', function (data) {
     console.log(''+data);
-    mess+=data;
   });
 
   deploy.on('close', function (code) {
