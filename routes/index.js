@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/deploy/', function (req, res) {
   var spawn = require('child_process').spawn,
-      deploy = spawn('sh', [ 'deploy.sh' ]);
+      deploy = spawn('sh', [ '/var/www/bin/steam_trader/deploy.sh' ]);
 
   deploy.stdout.on('data', function (data) {
     console.log(''+data);
