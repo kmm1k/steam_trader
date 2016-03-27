@@ -19,8 +19,7 @@ router.post('/deploy/', function (req, res) {
   deploy.on('close', function (code) {
     console.log('Child process exited with code ' + code);
   });
-  res.json(200, {message: 'Github Hook received!',
-  message2: ""+mess})
+  res.json(200, {message: 'Github Hook received!'})
 });
 
 module.exports = router;
