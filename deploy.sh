@@ -20,8 +20,8 @@ git checkout $BRANCH
 
 npm install
 
-forever stop bin/www
-forever start bin/www
+forever stop /var/www/bin/$PROJECT_NAME/bin/www
+forever start /var/www/bin/$PROJECT_NAME/bin/www
 echo "#-----------------------------------------------#"
 echo "#              Execution Completed              #"
 echo "#-----------------------------------------------#"
