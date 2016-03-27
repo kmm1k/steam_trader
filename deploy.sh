@@ -1,5 +1,5 @@
 #!/bin/sh
-
+# Written by: LM
 if [[ -n "$1" ]] ; then
 	PROJECT_NAME=$1
 else
