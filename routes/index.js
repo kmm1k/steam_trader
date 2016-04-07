@@ -24,9 +24,8 @@ module.exports = function (passport) {
   router.get('/home', isAuthenticated, function (req, res) {
     itemsModule();
     itemsModule.getItems(req.user.steam.openId, function(data) {
-      var userItems = data.result.items;
-      console.log("index.js", userItems[0]);
-      res.render('home', {user: req.user, items: userItems});
+      console.log("index.js", data[0]);
+      res.render('home', {user: req.user, items: data});
     });
   });
 

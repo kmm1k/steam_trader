@@ -1,31 +1,30 @@
-// example on how to make a module 1
-var steam = require('steam-web');
+// === FOR node-steam-user ===
+var SteamUser = require('steam-user');
+var client = new SteamUser();
+// === END FOR node-steam-user ===
+var TradeOfferManager = require('steam-tradeoffer-manager');
 var secrets = require('../passport/secrets');
 
 
 
 var items = function() {
-    var s = new steam({
-        apiKey: secrets.steam.key,
-        format: 'json'
-    });
 
 
     items.getItems = function(steamid, callback) {
-        console.log(steamid)
-        s.getPlayerItems({
-            gameid: 730,
-            steamid: steamid,
-            callback: function(err, data) {
-                if (err) {
-                    console.log(err)
-                }
-                callback(data);
-            }
-        })
-    }
+        var manager = new TradeOfferManager({
+            "steam": client,
+            "language": "en"
+        });
+        manager.loadUserInventory(steamid, 730, 2, 1, function (err, inventory) {
+            if (err) {
+                console.log(err);
+            } else {
 
-    items.get
+                console.log("items.js", inventory)
+                callback(inventory)
+            }
+        });
+    }
 
 }
 
