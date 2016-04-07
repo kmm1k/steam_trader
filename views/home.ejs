@@ -7,6 +7,14 @@
   <body>
     <h1>express</h1>
     <p>Welcome to  express website</p>
-    <a href="/auth/steam"> log in with steam </a>
+
+    <ul>
+        <% for(var i=0; i<items.length; i++) { %>
+        <li>
+            <%= items[i].id %>
+        </li>
+        <% } %>
+    </ul>
+    <a href="/signout"> log out </a>
   </body>
 </html>
