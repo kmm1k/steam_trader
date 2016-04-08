@@ -12,6 +12,7 @@
         <% for(var i=0; i<items.length; i++) { %>
         <li>
             <%= items[i].name %>
+            <img src="<%= items[i].getImageURL()%>" >
         </li>
         <% } %>
     </ul>
