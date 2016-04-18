@@ -1,21 +1,33 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>title</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1>express</h1>
-    <p>Welcome to  express website</p>
+<%- include parts/header.ejs %>
+<body>
+<div class="container">
+    <div class="jumbotron">
+        <h1>here are your guns YO</h1>
 
-    <ul>
-        <% for(var i=0; i<items.length; i++) { %>
-        <li>
-            <%= items[i].name %>
-            <img src="<%= items[i].getImageURL()%>" >
-        </li>
-        <% } %>
-    </ul>
-    <a href="/signout"> log out </a>
-  </body>
-</html>
+        <p>select them to trade!</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="row">
+                <% for(var i = 0; i < items.length; i++) { %>
+                <div class="col-sm-4" onclick="removeItem()">
+                    <%= items[i].name %>
+                    <img width="100%" src="<%= items[i].getImageURL() %>">
+                </div>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    function removeItem() {
+        alert("shud remove item");
+    }
+</script>
+
+
+<a href="/signout"> log out </a>
+</body>
+<%- include parts/footer.ejs %>
