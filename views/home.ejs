@@ -6,15 +6,31 @@
 
         <p>select them to trade!</p>
     </div>
+    <button type="button" class="btn btn-primary btn-block">add these items to trade</button>
     <div class="row">
+
         <div class="col-sm-6">
-            <div class="row">
+            <div class="jumbotron itemsInfo">
+                <h2>Your items</h2>
+                <p>overall value:</p>
+            </div>
+            <div id="userInventory" class="row">
                 <% for(var i = 0; i < items.length; i++) { %>
-                <div class="col-sm-4" onclick="removeItem()">
+                <div  class="col-sm-4 singleItemSelector" id="<%= items[i].id %>" onclick="removeItem(<%= items[i].id %>)">
                     <%= items[i].name %>
                     <img width="100%" src="<%= items[i].getImageURL() %>">
                 </div>
                 <% } %>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="jumbotron itemsInfo">
+                <h2>Items to trade</h2>
+                <p>trade value:</p>
+                <p>trade limit:<span id="tradeLimitElement"></span></p>
+            </div>
+            <div id="selectedItems" class="row">
+
             </div>
         </div>
     </div>
@@ -22,8 +38,37 @@
 </div>
 
 <script>
-    function removeItem() {
-        alert("shud remove item");
+    var itemsListToTrade = [];
+    function removeItem(id) {
+        if (itemIn(id, itemsListToTrade)){
+            $("#"+id).detach().appendTo('#userInventory');
+            itemPop(id, itemsListToTrade)
+        } else {
+            if (itemsListToTrade.length == 9) {
+                alert("please remove some items. 9 items max for trade-in.")
+                return
+            }
+            $("#"+id).detach().appendTo('#selectedItems');
+            itemsListToTrade.push(id);
+        }
+        $("#tradeLimitElement").html(itemsListToTrade.length+"/9");
+        console.log(itemsListToTrade);
+    }
+
+    function itemIn(itemId, list) {
+        for (var i = 0; i < list.length; i++ ) {
+            if (itemId == list[i])
+                return true;
+        }
+        return false;
+    }
+
+    function itemPop(itemId, list) {
+        var index = list.indexOf(itemId);
+        if (index > -1) {
+            list.splice(index, 1)
+        }
+        return list;
     }
 </script>
 

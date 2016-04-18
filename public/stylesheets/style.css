@@ -6,3 +6,20 @@ body {
 a {
   color: #00B7FF;
 }
+
+.singleItemSelector {
+  height: 200px;
+}
+
+#selectedItems {
+  background-color: #d1eaff;
+  min-height: 200px;
+}
+#userInventory {
+  background-color: rgb(255, 241, 156);
+  min-height: 200px;
+}
+
+.itemsInfo {
+  height: 200px;
+}
